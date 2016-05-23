@@ -1,0 +1,13 @@
+
+CREATED db
+docker run --name db -e MYSQL_ROOT_PASSWORD=test -d -p 3306:3306 mariadb
+
+
+CREATED IMAGE
+docker build -t chef_browser .
+
+LINK DB
+docker run -id -p 5000:5000 -v /Users/kanwarmalik/chef_browser/:/opt/chef_browser --name cb --link db:mysql chef_browser bash
+
+EXECTUE
+docker exec -it cb bash

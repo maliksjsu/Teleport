@@ -1,0 +1,30 @@
+/*
+	Theme Name:     Clipboard Child Theme
+	Theme URI:      http://www.demo.visualkicks.com/clipboard
+	Description:    A child theme for Clipboard
+	Author:         Visualkicks
+	Author URI:     http://www.visualkicks.com
+	Version:        1.0
+	Template:       clipboard
+*/
+
+/*=========================================================================================================
+
+	NOTE: This child themes parent creates inline styles in the <head> tag after this file is called.
+	This means inline styles created by the theme customizer will supercede your below styles. To
+	override the inline styles target your elements from further back OR use the !important rule.
+	However try to avoid the !important rule where possible. Feel free to delete this.
+
+	example 1
+	div.parent div.element {
+		padding: 100px;
+	}
+
+	example 2
+	div.element {
+		padding: 100px !important;
+	}
+
+========================================================================================================*/
+
+@import url('../clipboard/style.css');

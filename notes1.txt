@@ -1,0 +1,193 @@
+creating the mariadb container while not building but just using one that is already
+
+docker run --name db -e MYSQL_ROOT_PASSWORD=test -d -p 3306:3306 mariadb
+# -e is for the environmental variable we pass to the container
+
+#create another container and connect this earlier container and start a shell and start playing
+
+docker run --name mysql-client -it --link db:mysql --rm mariadb sh -c 'exec mysql -uroot -ptest -hmysql'
+
+SHOW DATABASES;
+
+CREATE DATABASE my_flask_app;
+
+USE my_flask_app;
+
+CREATE TABLE user (
+user_id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(64) NOT NULL,
+password VARCHAR(64) NOT NULL,
+PRIMARY KEY(user_id)
+);
+
+INSERT INTO user VALUES('' , ''maliksjsu', '12345);
+
+SELECT user_id, username, password FROM user;
+
+SELECT user_id, username, password FROM user WHERE username = 'maliksjsu';
+
+
+docker build -t flask-intro-mysql .
+docker run -d -p 5000:5000 -v /Users/kanwarmalik/flask-intro:/opt/flask-into --name web --link db:mysql flask-intro-mysql
+
+
+------------------------------------------------------------------------------------
+
+
+RUn db
+create docker file
+create requirements file
+    flask-alchemy
+    sqlalcehemy is a database orm we create models not cursors, model is a description of
+    fields in your table or database and map them into a class
+
+create __init__.py
+    load from settings files instead of in the script
+    home folder
+
+create manage.py
+    start and stop file
+
+create a home folder
+    create __iniit__.py
+    create views.py
+    routing '/' and '/index'
+    to see if it's running
+
+create settings.py
+    add secret key and also the  debug = true so what we can see the errors
+
+now build the app with docker
+
+build -t flask_blog .
+
+now run this contanier as a demon but a demon that we can intercat with
+
+docker run -id -p 5000:5000 -v /Users/kanwarmalik/flask_blog/:/opt/flask_blog --name blog --link db:mysql flask_blog bash
+docker run -id -p 5000:5000 -v /Users/kanwarmalik/flask_facebook_login:/opt/flask_facebook_login --name facebook flask_facebook_login bash
+now go into the container
+docker exec -it blog bash
+
+changed the name from home to blog
+add the user foler
+add __init__.py to user folder
+add views and add some routing
+** connection to the databse
+    add SQLALCHEMY__URI  to settings.py so that it knows how to connect
+    add sqlalchemy stuff in __init__.py
+    adding user.models will have everything that is database related
+        import db from flask
+        class user db.models
+            id, email, username, password
+                add is_author if true then he is a blogger or he is a reader
+            def __init__
+            def __repr__ (how to repreent )
+
+
+create dbinit.py for that othermodeules can use the settings
+    db_username and passord blog name in settings.py blog name
+    URO changed to  %s
+
+    pass the path os.path thing
+    use try
+        will have the db_uri and engin and conn
+    expect
+        any erroes if exists
+
+    add the models.
+    db.create.all
+
+run dbinit.py
+and run registration forms
+interact with a orm by using manage.py
+    ** create a user object that is mapped to the database by doing user = User(annd passing modle paramenters)
+    now do user is a class with fields as methods
+    but to put it in databse we have to do db.session.add(user) and db.session.commit()
+    we can check that by using user.id because that is automatically generated
+    maliksjsu = User.query.filter_by(username ='maliksjsu').first() (if not first then it will be a list even if it's one record)
+    update by doing maliksjsu.email = 'new_email') and then db.session.commit
+    db.session.delete(maliksjsu)
+
+
+    from chef_browser import db
+
+
+make folder static
+    new folder: download put in it in Bootstrap folder
+    new folder: js -> download jquery
+
+create template folder :
+    add base.html
+        head
+        viewport for any platfrom includ cell phone
+        body
+        refer boot trap in the header for css
+        jquery and bootstrap.js
+
+user registration form
+add flask-wtf in requrements and run pip install inside the container pip install -r requirements.txt
+add form.py into the main user folder
+    from flask_wtf
+
+    create a registerForm class
+
+Create user folder inside the template folder and create register.html
+    use macros simple the repe patterns within these marcros
+        _formhelpers
+
+        pass the fields
+
+        crf protection to make sure post is coming for this form and not from a hacker
+
+create blog folder:
+    create the form.py
+        setupForm
+    create the model.py
+
+
+
+    create template-user-register.html
+        row class
+            column off set of 3 col med 6 width
+            import form_helpers
+
+....
+if the user is not logged into the admin
+We want to create a decorator a function appended to it
+     to cheack if the user is logged in
+
+Create user.decortar
+and add to the user and blog
+
+Password encyrption
+chaning fields
+aconept of mature.frmaeworks
+using migration, snapshot
+drop database to control under flask_migrate
+change __init__ to add flask_migrte
+also add the migrate to manage.py
+    python manage.py db init
+        this will make migrations folder
+            add  compare_type=True to context.configure
+
+take a snapshot
+    python manage.py db migrate
+    add to dbint the database blog
+    python manage.py db upgrade
+
+add another package
+py-bcrypt
+added the hashed password to the user.models and blog.models
+change the length of the passwowrd
+now migtrate and upgrade
+
+see what python modules are running
+ps -ef | grep python
+
+Post.query.order_by(Post.publish_date.desc())
+import pdb; pdb.set_trace()
+
+https://docs.docker.com/engine/installation/mac/#access-container-ports
+http://stackoverflow.com/questions/22581242/issues-in-using-flask-upload
+http://192.168.99.100:5000/login
+

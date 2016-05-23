@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+        <meta charset="utf-8">
+        <title>Kanwar Ki Himakatein</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="" name="description" />
+        <meta content="themes-lab" name="author" />
+
+        <link href="{{ url_for('static', filename='assets/plugins/bootstrap-loading/lada.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='assets/css/ui.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}" >
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container">
+      {% block content %}{% endblock %}
+
+      <div class="col-md-offset-3 col-md-6">
+        <hr />
+        <footer>
+
+        </footer>
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename='javascript/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/jquery-1234.js') }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+
+
+  </body>
+</html>

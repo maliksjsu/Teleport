@@ -1,0 +1,41 @@
+
+
+crtl space-  by writing the name and finding it
+
+then - ctrl enter to import
+
+going back is - cmd alt v
+
+select all-  alt upper button
+
+uppercase - shift cmd u
+
+complete current statement - shift command enter
+
+show intention action - alt enter
+
+new line = shift-enter
+
+duplicate line = cmdD
+
+delete word - alt delete - put at the last
+
+cmdR to run
+
+
+reformat pep8 alt enter
+python console. control space to enter
+
+route and then tab
+http://127.0.0.1:5000/api/pin
+
+built-in terminal
+bower install angular
+
+script:src and then hit tab
+
+WILL CREATE DIRECTORY alt enter
+
+cmd e for recent files
+
+img:
